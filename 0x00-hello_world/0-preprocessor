@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -E SCFILE > c 
+gcc -E $CFILE > c 
