@@ -2,9 +2,9 @@
 
 
 /**
- * main - prints "Programming is like building a multilingu
- *  puzzle, followed by a newline."
- *  Return: Always 0.
+ * main - A program that prints a line with puts functio
+ n 
+ * Return: 0 (Success) 
  */
 int main(void)
 
