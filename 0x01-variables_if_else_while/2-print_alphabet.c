@@ -3,20 +3,18 @@
 /**
  * main - Entry point
  *
- * Description: print a-z using putchar
- *              while using int variable
+ * Description: print all alphabet letters
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-int letter = a;
+char ch = 'a';
 
-while (letter <= z)
+while (ch <= 'z')
 {
-/*convert letter to ASCII representation*/
-putchar(letter + '0');
-letter++;
+putchar(ch);
+ch++;
 }
 putchar('\n');
 
