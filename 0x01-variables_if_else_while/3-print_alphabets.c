@@ -23,7 +23,7 @@ ch++;
 while (CH <= 'Z')
 {
 putchar(CH);
-ch++;
+CH++;
 }
 putchar('\n');
 
