@@ -3,20 +3,20 @@
 /**
  * main - Entry point
  *
- * Description: print 0-9 using putchar
+ * Description: print a-z using putchar
  *              while using int variable
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-int digit = 0;
+int letter = a;
 
-while (digit <= 9)
+while (letter <= z)
 {
-/*convert digit to ASCII representation*/
-putchar(digit + '0');
-digit++;
+/*convert letter to ASCII representation*/
+putchar(letter + '0');
+letter++;
 }
 putchar('\n');
 
