@@ -8,23 +8,31 @@
  */
 char *cap_string(char *str)
 {
-int i;
-int capitalize_next = 1;
+int index = 0;
 
-for (i = 0; str[i] != '\0'; i++)
+while (str[index])
 {
-if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-str[i] == ',' || str[i] == ';' || str[i] == '.' ||
-str[i] == '!' || str[i] == '?' || str[i] == '"' ||
-str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}')
+while (!(str[index] >= 'a' && str[index] <= 'z'))
+index++;
+
+if (str[index - 1] == ' ' ||
+str[index - 1] == '\t' ||
+str[index - 1] == '\n' ||
+str[index - 1] == ',' ||
+str[index - 1] == ';' ||
+str[index - 1] == '.' ||
+str[index - 1] == '!' ||
+str[index - 1] == '?' ||
+str[index - 1] == '"' ||
+str[index - 1] == '(' ||
+str[index - 1] == ')' ||
+str[index - 1] == '{' ||
+str[index - 1] == '}')
 {
-capitalize_next = 1;
+str[index] -= 32;
 }
-else if (capitalize_next && (str[i] >= 'a' && str[i] <= 'z'))
-{
-str[i] -= 32;
-capitalize_next = 0;
-}
+
+index++;
 }
 
 return (str);
