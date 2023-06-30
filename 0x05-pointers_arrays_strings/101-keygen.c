@@ -1,51 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
 
-#define PASSWORD_LENGTH 10
+#define MAX_PASSWORD_LENGTH 256
 
 /**
  * generate_password - Generates a random password.
  *
  * Return: The generated password as a dynamically allocated string.
  */
-char *generate_password(void)
-{
-static const char charset[] =
-"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-char *password = malloc((PASSWORD_LENGTH + 1) * sizeof(char));
 
-if (password == NULL)
+char* generate_password() {
+char* password = (char*)malloc(MAX_PASSWORD_LENGTH * sizeof(char));
+FILE* pipe = popen("./101-keygen", "r");
+if (pipe == NULL)
 {
-fprintf(stderr, "Memory allocation failed.\n");
+printf("Error executing 101-keygen.\n");
 exit(1);
 }
-
-srand(time(NULL));
-
-for (int i = 0; i < PASSWORD_LENGTH; i++)
-{
-int random_index = rand() % (sizeof(charset) - 1);
-password[i] = charset[random_index];
-}
-password[PASSWORD_LENGTH] = '\0';
-
-return (password);
+fgets(password, MAX_PASSWORD_LENGTH, pipe);
+pclose(pipe);
+password[strcspn(password, "\n")] = '\0';  // Remove trailing newline character
+return password;
 }
 
-/**
- * main - Entry point of the program.
- *
- * Return: Always 0.
- */
-int main(void)
+int main(void) 
 {
-char *password = generate_password();
-
-printf("Generated Password: %s\n", password);
-
+char* password = generate_password();
+printf("Generated password: %s\n", password);
 free(password);
-
-return (0);
+return 0;
 }
 
